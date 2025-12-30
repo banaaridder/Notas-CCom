@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="login.css">
+  <title>Login - CCom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+</head>
+
+<body>
+  <div class="login-box">
+    <h2>CCom - Login</h2>
+
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="senha" placeholder="Senha">
+
+    <button onclick="login()">Entrar</button>
+
+    <p>
+      Primeiro acesso?
+      <a onclick="registrar()">Criar conta</a>
+    </p>
+
+    <div class="erro" id="erro"></div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

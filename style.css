@@ -1,0 +1,210 @@
+/* =========================
+   RESET BÁSICO
+========================= */
+* {
+    box-sizing: border-box;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: radial-gradient(circle at top, #1b383a 0%, #0d0d0d 60%);
+    color: #e6e6e6;
+    min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #0d0d0d, rgba(34, 69, 82, 0.2), #0d0d0d);
+    padding: 16px;
+    border-bottom: 1px solid  rgba(0, 175, 239, 0.205);
+}
+
+#nome{
+    left: 20px;
+    position: sticky;
+    top: 30px;
+    height: fit-content;
+    align-items: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.39);
+   font-size: 20px;
+
+}
+
+.logo-com{
+    height: 10px;
+    z-index: -1;
+    position: absolute;
+    align-items: end;
+    right: 4vw;
+    top: 50vh ;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    font-family: 'Orbitron', Arial, sans-serif;
+    letter-spacing: 2px;
+    color: rgb(0, 175, 239);
+    
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.layout {
+    display: flex;
+    gap: 24px;
+    padding: 40px;
+}
+
+.materias {
+    max-width: 50vw;
+    flex: 3;
+}
+
+/* =========================
+   PAINEL DE MÉDIA GERAL
+========================= */
+.media-geral {
+    flex: 1;
+    position: sticky;
+    top: 30px;
+    max-width: 250px;
+    height: fit-content;
+    background: linear-gradient(180deg, #142b2c, #0d0d0d);
+    border: 1px solid  rgb(0, 175, 239, 0.5);
+    border-radius: 6px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 0 25px  rgb(0, 175, 239, 0.2);
+}
+
+.media-geral span {
+    display: block;
+    margin-top: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 32px;
+    color: rgb(0, 175, 239);
+}
+
+/* =========================
+   CARDS (MATÉRIAS)
+========================= */
+.materia {
+    background: linear-gradient(180deg, #111, #0b0b0b);
+    border: 1px solid #ffffff10;
+    border-left: 4px solid rgb(0, 175, 239);
+    border-radius: 4px;
+    padding: 18px;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 20px #00000080;
+}
+
+.materia h2 {
+    margin-top: 0;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(0, 175, 239, 0.3);
+    padding-bottom: 6px;
+}
+
+/* =========================
+   LINHAS DE PROVA
+========================= */
+.prova {
+    display: grid;
+    grid-template-columns:  auto 1fr 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 6px 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+}
+
+.prova-tfm {
+   
+    grid-template-columns: auto 1fr 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 6px 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+}
+/* =========================
+   INPUTS
+========================= */
+input {
+    min-width: 150px;
+    appearance: none;
+    background: #0d0d0d;
+    border: 1px solid #ffffff20;
+    border-radius: 3px;
+    padding: 6px;
+    color: #e6e6e6;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.2s ease;
+}
+
+input::placeholder {
+    color: #888;
+}
+
+input:focus {
+    outline: none;
+    border-color: rgb(0, 175, 239);
+    box-shadow: 0 0 6px  rgb(0, 175, 239, 0.6);
+    background: #000;
+}
+
+/* =========================
+   RESULTADOS
+========================= */
+.resultado {
+    text-align: right;
+    margin-top: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 15px;
+}
+
+.resultado span {
+    color:  rgb(0, 175, 239);
+    font-size: 18px;
+}
+
+/* =========================
+   NOTAS INDIVIDUAIS (TFM)
+========================= */
+.prova span {
+    font-size: 16px;
+    color:  rgb(0, 175, 239);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 900px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .media-geral {
+        position: static;
+        margin-top: 20px;
+    }
+}
