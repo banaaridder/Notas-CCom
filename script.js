@@ -392,7 +392,8 @@ function calcularTudo() {
     let count = 0;
 
     // matérias de gaivota (como já existe)
-    const materias = ["tec", "fund", "ciber"];
+   const materias = ["tec", "fund", "ciber", "empre", "pt", "racio", "didat"];
+
 
     materias.forEach(m => {
         const media = calcularMateria(m);
@@ -448,3 +449,4 @@ function mascaraTempo(input) {
 
     input.value = valor;
 }
+
