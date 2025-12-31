@@ -1,25 +1,5 @@
-
-//SupaBase
-const { data: { session } } = await supabase.auth.getSession();
-
-const supabaseUrl = "SUA_URL_DO_SUPABASE";
-const supabaseKey = "SUA_ANON_PUBLIC_KEY";
-
-const supabase = supabaseJs.createClient(
-  supabaseUrl,
-  supabaseKey
-);
-
 document.addEventListener("input", calcularTudo);
 
-document.addEventListener("DOMContentLoaded", () => {
-  carregarNotas();
-});
-
-
-if (!session) {
-  window.location.href = "login.html";
-}
 
 /* =========================
    UTILIDADES
@@ -61,18 +41,18 @@ function notaPorQuantidade(valor, tabela, tipo) {
 ========================= */
 
 function calcularMateria(prefixo) {
-
     let provas;
 
-    // Fundamentos só tem AA e AC
-    if (prefixo === "fund", "empre", "pt", "racio", "didat") {
+    // Lista de matérias que só têm AA e AC
+    const materiasSimples = ["fund", "empre", "pt", "racio", "didat"];
+
+    if (materiasSimples.includes(prefixo)) {
         provas = [
             { id: "aa", peso: 1 },
             { id: "ac", peso: 2 }
         ];
-    } 
-    // Outras matérias
-    else {
+    } else {
+        // Outras matérias têm AA1, AA2 e AC
         provas = [
             { id: "aa1", peso: 1 },
             { id: "aa2", peso: 1 },
@@ -355,69 +335,6 @@ function calcularTFM() {
 /* =========================
    GERAL
 ========================= */
-
-function coletarNotas() {
-  const dados = {};
-
-  document.querySelectorAll("input").forEach(input => {
-    if (!input.id) return;
-
-    dados[input.id] = input.value;
-  });
-
-  return dados;
-}
-
-async function salvarNotas() {
-  const {
-    data: { user }
-  } = await supabase.auth.getUser();
-
-  if (!user) return;
-
-  const dados = coletarNotas();
-
-  const { error } = await supabase
-    .from("notas")
-    .upsert({
-      user_id: user.id,
-      dados: dados,
-      updated_at: new Date()
-    });
-
-  if (error) {
-    console.error("Erro ao salvar notas:", error.message);
-  }
-}
-
-async function carregarNotas() {
-  const {
-    data: { user }
-  } = await supabase.auth.getUser();
-
-  if (!user) return;
-
-  const { data, error } = await supabase
-    .from("notas")
-    .select("dados")
-    .eq("user_id", user.id)
-    .single();
-
-  if (error || !data) return;
-
-  const dados = data.dados;
-
-  Object.keys(dados).forEach(id => {
-    const input = document.getElementById(id);
-    if (input) {
-      input.value = dados[id];
-    }
-  });
-
-  calcularTudo();
-}
-
-
 
 function calcularTiro() {
     const aa = parseFloat(document.getElementById("tiro-aa")?.value);
